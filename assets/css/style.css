@@ -1,0 +1,484 @@
+/* =========================================
+   GENEL AYARLAR VE RENK PALETİ
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --space-dark: #0B132B; 
+    --card-dark: #1C2541;  
+    --neon-blue: #5BC0BE;  
+    --text-light: #E6F1F9; 
+    --text-muted: #A0B2C6; 
+}
+
+body.light-mode {
+    --space-dark: #F7F9FC; 
+    --card-dark: #FFFFFF;  
+    --neon-blue: #4A90E2;  
+    --text-light: #2C3E50; 
+    --text-muted: #7F8C8D; 
+}
+
+/* Light mode specific fine-tuning & Bootstrap Overrides */
+body.light-mode .glass-sidebar, body.light-mode .glass-card, body.light-mode .assistant-panel, body.light-mode .calendar-container {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: rgba(74, 144, 226, 0.2) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+body.light-mode .text-light, 
+body.light-mode .text-white { 
+    color: var(--text-light) !important; 
+}
+
+body.light-mode .text-muted {
+    color: var(--text-muted) !important;
+}
+
+body.light-mode .bg-dark {
+    background-color: #E2E8F0 !important;
+    color: var(--text-light) !important;
+}
+
+body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode h5, body.light-mode h6 {
+    color: var(--text-light) !important;
+}
+
+body.light-mode #particles-js { opacity: 0.15; filter: invert(1); }
+
+body.bg-dark-space {
+    background-color: var(--space-dark);
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* =========================================
+   ANİMASYONLAR
+========================================= */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 0;
+    top: 0;
+    left: 0;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.slide-up-fade {
+    animation: slideUpFade 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes slideUpFade {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   KART VE INPUT TASARIMLARI (Beton Gibi Sağlam)
+========================================= */
+.antigravity-card {
+    background: rgba(28, 37, 65, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(91, 192, 190, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(91, 192, 190, 0.1);
+    animation: float 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.neon-text {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(91, 192, 190, 0.5);
+}
+
+.custom-input-group {
+    width: 100%;
+    position: relative;
+}
+
+.input-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.custom-input-group label {
+    color: var(--text-muted) !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.antigravity-input {
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-light) !important;
+    padding-left: 35px;
+    padding-right: 15px;
+    padding-bottom: 8px; 
+    border-radius: 0;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+}
+
+.antigravity-input::placeholder, .form-control::placeholder, .form-select::placeholder {
+    color: rgba(160, 178, 198, 0.4);
+}
+
+/* GLOBAL FORM CONTROL OVERRIDE FOR DARK GLASS LOOK */
+.form-control, .form-select {
+    background: rgba(0,0,0,0.3) !important;
+    border: 1px solid rgba(91,192,190,0.3) !important;
+    color: var(--text-light) !important;
+    border-radius: 8px;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--neon-blue) !important;
+    background: rgba(0,0,0,0.5) !important;
+    box-shadow: 0 0 10px rgba(91,192,190,0.3) !important;
+}
+.form-select option {
+    background-color: var(--card-dark) !important;
+    color: var(--text-light) !important;
+}
+
+.input-icon {
+    position: absolute;
+    left: 5px;
+    top: 45%;
+    transform: translateY(-50%);
+    color: var(--neon-blue);
+}
+
+.input-glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--neon-blue);
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px var(--neon-blue);
+}
+
+.antigravity-input:focus ~ .input-glow-line {
+    width: 100%;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 5px;
+    top: 45%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.3s;
+}
+
+.password-toggle:hover {
+    color: var(--neon-blue);
+}
+
+.btn-neon {
+    background: transparent;
+    color: var(--neon-blue);
+    border: 1px solid var(--neon-blue);
+    border-radius: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-neon:hover {
+    background: var(--neon-blue);
+    color: var(--space-dark);
+    box-shadow: 0 0 20px var(--neon-blue);
+    transform: scale(1.02);
+}
+
+select.antigravity-input {
+    background-color: var(--card-dark) !important;
+    color: var(--text-light) !important;
+    cursor: pointer;
+}
+
+select.antigravity-input option {
+    background-color: var(--space-dark);
+    color: var(--text-light);
+    padding: 10px;
+}
+
+/* =========================================
+   DASHBOARD / PROFIL SOL MENÜ (SABİT 280PX)
+========================================= */
+.glass-sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 280px; /* SABİTLENDİ */
+    height: 100vh;
+    background: rgba(28, 37, 65, 0.6);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid rgba(91, 192, 190, 0.2);
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 20px;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+}
+
+/* YENİ EKLENEN LOGO CSS'İ */
+.sidebar-logo {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(91, 192, 190, 0.6)); /* Okul logona havalı neon gölge */
+    transition: transform 0.4s ease;
+}
+.sidebar-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.sidebar-link i {
+    min-width: 35px;
+    font-size: 1.2rem;
+    color: var(--neon-blue);
+    text-align: center;
+}
+
+.sidebar-link:hover {
+    background: rgba(91, 192, 190, 0.15);
+    color: var(--neon-blue);
+    border-right: 4px solid var(--neon-blue);
+}
+
+.sidebar-text {
+    opacity: 1; /* YAZILAR HEP AÇIK */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ANA İÇERİK MENÜDEN KAÇIYOR (280px MARGIN) */
+.main-content {
+    margin-left: 280px; 
+    width: calc(100% - 280px);
+    padding: 0;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.glass-card {
+    background: rgba(28, 37, 65, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    padding: 25px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+
+
+/* =========================================
+   MODAL BACKDROP BLUR
+========================================= */
+.modal-backdrop.show {
+    backdrop-filter: blur(6px);
+    background-color: rgba(11, 19, 43, 0.6) !important;
+}
+@media print {
+    body, .bg-dark-space { background: #fff !important; color: #000 !important; }
+    .glass-sidebar, .btn, .badge, #particles-js, .dropdown, .school-watermark { display: none !important; }
+    .main-content, .glass-card { margin: 0 !important; padding: 0 !important; border: none !important; background: transparent !important; }
+    .table, .table-dark { color: #000 !important; background: #fff !important; border-color: #000 !important; }
+    .table th { border-bottom: 2px solid #000 !important; color: #000 !important; background: #fff !important;}
+    .table td { border-bottom: 1px solid #ccc !important; background: #fff !important; }
+    .text-light, .text-warning, .text-info, .text-success, .text-danger { color: #000 !important; }
+    .neon-text { text-shadow: none !important; color: #000 !important; }
+    .table-responsive { overflow: visible !important; }
+}
+
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* ============================================================ */
+/* 🌟 ULTIMATE LIGHT MODE OVERRIDES (PREMIUM APPLE-STYLE) 🌟 */
+/* ============================================================ */
+body.light-mode {
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%) !important;
+    background-color: #fdfbfb !important;
+    color: #2c3e50 !important;
+}
+
+/* KARTLAR VE CAM TASARIMLAR (BEYAZ/AÇIK GRİ FROSTED GLASS) */
+body.light-mode .glass-card,
+body.light-mode .glass-sidebar,
+body.light-mode .calendar-container,
+body.light-mode .assistant-panel,
+body.light-mode .metric-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+    color: #2c3e50 !important;
+    backdrop-filter: blur(15px) !important;
+}
+
+/* YAZILAR (HEADINGS, LABELS, PARAGRAPHS) */
+body.light-mode .text-light,
+body.light-mode .text-white,
+body.light-mode h1, body.light-mode h2, body.light-mode h3, 
+body.light-mode h4, body.light-mode h5, body.light-mode h6,
+body.light-mode .sidebar-text,
+body.light-mode .profile-label,
+body.light-mode .form-label {
+    color: #1a252f !important;
+}
+
+body.light-mode .text-muted,
+body.light-mode .lesson-teacher {
+    color: #636e72 !important;
+}
+
+/* TABLOLAR */
+body.light-mode .table-custom-dark {
+    color: #2d3436 !important;
+}
+body.light-mode .table-custom-dark thead th {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #2c3e50 !important;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1) !important;
+}
+body.light-mode .table-custom-dark tbody tr {
+    background: rgba(255, 255, 255, 0.6) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+body.light-mode .table-custom-dark tbody tr:hover {
+    background: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* FORMLAR, INPUTLAR VE SELECT KUTULARI */
+body.light-mode .form-control,
+body.light-mode .form-select,
+body.light-mode .custom-setting-input,
+body.light-mode input[type='text'],
+body.light-mode input[type='password'],
+body.light-mode input[type='email'],
+body.light-mode input[type='file'],
+body.light-mode textarea {
+    background: #ffffff !important;
+    border: 1px solid #ced4da !important;
+    color: #2d3436 !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+body.light-mode .form-control:focus,
+body.light-mode .custom-setting-input:focus {
+    border-color: #5BC0BE !important;
+    box-shadow: 0 0 0 0.2rem rgba(91, 192, 190, 0.25) !important;
+    background: #ffffff !important;
+}
+body.light-mode input::placeholder,
+body.light-mode textarea::placeholder {
+    color: #a4b0be !important;
+}
+
+/* MODALLAR (AÇILIR PENCERELER) */
+body.light-mode .modal-content {
+    background: #ffffff !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15) !important;
+    color: #2d3436 !important;
+}
+body.light-mode .modal-header,
+body.light-mode .modal-footer {
+    border-color: rgba(0,0,0,0.08) !important;
+    background: rgba(248, 249, 250, 0.9) !important;
+}
+body.light-mode .modal-header h5,
+body.light-mode .modal-header .btn-close {
+    color: #2c3e50 !important;
+}
+body.light-mode .profile-line {
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+    color: #2d3436 !important;
+}
+body.light-mode .profile-line span:first-child {
+    color: #636e72 !important;
+}
+
+/* BUTONLAR VE İKONLAR */
+body.light-mode .btn-close {
+    filter: invert(1) grayscale(100%) brightness(0) !important;
+}
+body.light-mode .neon-blue, body.light-mode .neon-text {
+    color: #0984e3 !important;
+    text-shadow: none !important;
+}
+body.light-mode .sidebar-link:hover {
+    background: rgba(0, 0, 0, 0.05) !important;
+    color: #0984e3 !important;
+}
+
+/* TAKVİM VE DERS PROGRAMI EKLENTİSİ OVERRIDES */
+body.light-mode .day-box {
+    background: #ffffff;
+    color: #2c3e50;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+body.light-mode .day-box:hover:not(.holiday) { background: #e3f2fd !important; color: #0984e3 !important;}
+body.light-mode .day-box.holiday { background: #f8f9fa !important; color: #b2bec3 !important; }
+body.light-mode .day-box.has-appointment { background: rgba(220, 53, 69, 0.1) !important; border-color: #dc3545 !important; color: #dc3545 !important;}
+body.light-mode .mini-lesson-card { background: #fdfdfd !important; border-color: rgba(0,0,0,0.1) !important;}
+body.light-mode .mini-lesson-card:hover { background: #e3f2fd !important; border-color: #0984e3 !important;}
+body.light-mode .mini-time { color: #0984e3 !important; }
+body.light-mode .mini-lesson { color: #2d3436 !important; }
+body.light-mode .mini-teacher { color: #636e72 !important; }
+
+/* ETİKETLER (BADGES) */
+body.light-mode .badge.bg-secondary { background: #dfe6e9 !important; color: #2d3436 !important;}
+body.light-mode .badge.bg-dark { background: #f1f2f6 !important; color: #2f3542 !important; border-color: #ced6e0 !important;}
+
+/* SİSTEM BİLDİRİM ZİLİ DROPDOWN */
+body.light-mode .dropdown-menu { background: #ffffff !important; border: 1px solid rgba(0,0,0,0.1) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; }
+body.light-mode .dropdown-item { color: #2d3436 !important; }
+body.light-mode .dropdown-item:hover { background: #f8f9fa !important; }
+body.light-mode .dropdown-header { color: #636e72 !important; border-bottom: 1px solid rgba(0,0,0,0.05) !important; }
